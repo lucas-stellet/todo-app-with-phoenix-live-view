@@ -36,6 +36,8 @@ defmodule TodoWeb do
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
+      use Phoenix.Component
+
       # Include shared imports and aliases for views
       unquote(view_helpers())
     end
@@ -95,8 +97,6 @@ defmodule TodoWeb do
 
       import TodoWeb.ErrorHelpers
       alias TodoWeb.Router.Helpers, as: Routes
-
-      use Phoenix.Component
     end
   end
 

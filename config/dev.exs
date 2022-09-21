@@ -26,7 +26,8 @@ config :todo, TodoWeb.Endpoint,
   secret_key_base: "1ATOLpSy4h5otPk978EKZP7gO6AbD75Z3IyYIj9CcOzxID3BqdI41EME/RETU2T8",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
