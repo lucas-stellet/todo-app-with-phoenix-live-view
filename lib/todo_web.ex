@@ -97,6 +97,8 @@ defmodule TodoWeb do
 
       import TodoWeb.ErrorHelpers
       alias TodoWeb.Router.Helpers, as: Routes
+
+      use TodoWeb.Components
     end
   end
 
