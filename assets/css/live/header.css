@@ -1,0 +1,7 @@
+.bkg-dark {
+    @apply max-w-full h-[350px] bg-cover bg-header-dark-background
+}
+
+.bkg-light {
+    @apply max-w-full h-[350px] bg-cover bg-header-light-background
+}

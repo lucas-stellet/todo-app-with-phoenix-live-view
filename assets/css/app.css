@@ -2,6 +2,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "/live/content.css";
+@import "/live/header.css";
+
 /* This file is for your main application CSS */
 
 /* Alerts and form errors used by phx.new */
@@ -151,18 +154,4 @@
   100% {
     opacity: 0;
   }
-}
-
-/* header component */
-
-.bkg {
-  @apply max-w-full h-[350px] bg-cover
-}
-
-.is-dark {
-  @apply bg-header-dark-background
-}
-
-.is-light {
-  @apply bg-header-light-background
 }

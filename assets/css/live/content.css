@@ -1,0 +1,19 @@
+.content {
+    @apply m-auto w-[540px] relative -top-[250px] h-[48px]
+}
+
+.panel {
+    @apply flex justify-between relative
+}
+
+.task-card {
+    @apply flex h-[64px] w-full bg-light-mode-background-card rounded-task-card;
+}
+
+.task-btn {
+    @apply h-[40px] w-[40px] rounded-full border-2 border-solid border-gray-200
+}
+
+.task-btn-checked {
+    @apply h-[40px] w-[40px] rounded-full bg-gradient-to-r from-blue-check-background to-pink-check-background
+}

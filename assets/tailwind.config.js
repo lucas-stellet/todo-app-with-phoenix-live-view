@@ -20,6 +20,7 @@ module.exports = {
         'light-mode-checkec-task-text': '#D1D2DA',
         'pink-check-background': '#C058F3',
         'blue-check-background': '#55DDFF',
+        'dark-mode-task-button-border': '#393A4B',
       },
       borderRadius: {
         'task-card': '5px',

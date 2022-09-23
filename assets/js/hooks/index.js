@@ -15,7 +15,7 @@ Hooks.UpdateColorMode = {
         localStorage.setItem('colorMode', 'light');
       }
 
-      this.pushEvent('update-color-mode', {
+      this.pushEvent('update_color_mode', {
         colorMode: localStorage.getItem('colorMode'),
       });
     });
