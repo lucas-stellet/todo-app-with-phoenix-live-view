@@ -20,16 +20,25 @@ defmodule TodoWeb.Components do
 
   def set_classes(assigns) do
     color_mode = Phoenix.Component.assigns_to_attributes(assigns)[:color_mode]
-    checked = ""
+    is_checked? = false
+
+    checked =
+      if is_checked? == true do
+        "checked-#{color_mode}"
+      else
+        "#{color_mode}"
+      end
 
     classes = %{
       background: "bkg-#{color_mode}",
       toggle: "/images/toggle-#{color_mode}.svg",
       task_text: "task-text#{checked}",
-      task_button: "task-btn#{checked}",
+      task_button: "task-btn-#{checked}",
       task_input_card: "task-input-card-#{color_mode}",
       task_input_input: "task-input-input-#{color_mode} focus:ring-0",
-      task_card: "task-card-#{color_mode}"
+      task_card: "task-card-#{color_mode}",
+      task_card_list: "task-card-list-#{color_mode}",
+      task_card_bottom: "task-card-bottom-#{color_mode}"
     }
 
     Logger.debug("""
