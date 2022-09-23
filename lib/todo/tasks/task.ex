@@ -7,7 +7,7 @@ defmodule Todo.Tasks.Task do
   schema "tasks" do
     field :author, :string
     field :description, :string
-    field :status, Ecto.Enum, values: [:active, :completed]
+    field :status, Ecto.Enum, values: [:active, :completed], default: :active
 
     timestamps()
   end
@@ -16,6 +16,11 @@ defmodule Todo.Tasks.Task do
   def changeset(task, attrs) do
     task
     |> cast(attrs, [:description, :status, :author])
-    |> validate_required([:description, :status, :author])
+    |> validate_required([:description])
+  end
+
+  def update_changeset(task, attrs) do
+    task
+    |> cast(attrs, [:description, :status])
   end
 end
