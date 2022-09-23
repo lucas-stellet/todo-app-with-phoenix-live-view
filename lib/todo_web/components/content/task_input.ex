@@ -7,15 +7,8 @@ defmodule TodoWeb.Components.Content.TaskInput do
     ~H"""
     <div class="task-card">
       <button class={@button}></button>
-      <%= f =
-        form_for(:task, "#",
-          id: "task-form",
-          phx_submit: "save"
-        ) %>
-      <%= text_input(f, :description) %>
-
       <.form for={:task} phx-submit="create_task">
-        <input type="text" name="" value="" placeholder="" />
+        <input type="text" name="description" placeholder="Create a new todo..." />
       </.form>
     </div>
     """
