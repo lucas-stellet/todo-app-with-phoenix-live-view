@@ -25,19 +25,16 @@ import { Socket } from 'phoenix';
 import { LiveSocket } from 'phoenix_live_view';
 import topbar from '../vendor/topbar';
 import Hooks from './hooks';
+import { setInitialColorMode, getCurrentColor } from './colorModeHandler';
 
-const colorMode = localStorage.getItem('colorMode');
-
-if (!colorMode) {
-  localStorage.setItem('colorMode', 'light');
-}
+setInitialColorMode();
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute('content');
 
 let liveSocket = new LiveSocket('/live', Socket, {
-  params: { _csrf_token: csrfToken, colorMode: colorMode },
+  params: { _csrf_token: csrfToken, colorMode: getCurrentColor() },
   hooks: Hooks,
 });
 
