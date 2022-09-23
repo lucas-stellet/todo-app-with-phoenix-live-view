@@ -1,15 +1,12 @@
 defmodule TodoWeb.Components.Header do
-  use Phoenix.LiveComponent
-
-  attr :color_mode, :string
+  use TodoWeb, :live_component
 
   def render(assigns) do
-    color_mode = assigns_to_attributes(assigns)[:color_mode]
-    assigns = assign(assigns, :color_mode, "bkg is-#{color_mode}")
+    assigns = set_classes(assigns)
 
     ~H"""
     <header>
-      <div class={@color_mode}></div>
+      <div class={@classes.background}></div>
     </header>
     """
   end
