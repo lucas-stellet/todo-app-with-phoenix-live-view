@@ -59,7 +59,7 @@ config :todo, TodoWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"lib/todo_web/(live|views)/.*(ex)$",
+      ~r"lib/todo_web/(live|views|components)/.*(ex)$",
       ~r"lib/todo_web/templates/.*(eex)$"
     ]
   ]
