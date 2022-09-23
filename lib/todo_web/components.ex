@@ -27,6 +27,8 @@ defmodule TodoWeb.Components do
       toggle: "/images/toggle-#{color_mode}.svg",
       task_text: "task-text#{checked}",
       task_button: "task-btn#{checked}",
+      task_input_card: "task-input-card-#{color_mode}",
+      task_input_input: "task-input-input-#{color_mode} focus:ring-0",
       task_card: "task-card-#{color_mode}"
     }
 
