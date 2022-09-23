@@ -1,0 +1,3 @@
+.panel {
+  @apply flex justify-between relative;
+}

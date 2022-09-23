@@ -1,11 +1,15 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@import "/live/content.css";
-@import "/live/header.css";
+@import '/live/content.css';
+@import '/live/header.css';
 
 /* This file is for your main application CSS */
+
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
 
 /* Alerts and form errors used by phx.new */
 .alert {
@@ -119,14 +123,14 @@
   }
 
   100% {
-    scale: 1.0;
+    scale: 1;
     opacity: 1;
   }
 }
 
 @keyframes fade-out-scale-keys {
   0% {
-    scale: 1.0;
+    scale: 1;
     opacity: 1;
   }
 
@@ -154,4 +158,22 @@
   100% {
     opacity: 0;
   }
+}
+
+[type='text'],
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+textarea,
+select {
+  background-color: none;
 }

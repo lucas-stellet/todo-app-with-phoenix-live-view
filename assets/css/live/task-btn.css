@@ -1,0 +1,18 @@
+/* light */
+.task-btn-light {
+  @apply h-[25px] w-[25px] rounded-full border-2 border-solid border-gray-200 p-3;
+}
+
+.task-btn-checked-light {
+  @apply h-[25px] w-[25px] rounded-full p-3 bg-gradient-to-r from-blue-check-background to-pink-check-background;
+}
+
+/* dark */
+
+.task-btn-dark {
+  @apply h-[25px] w-[25px] rounded-full border-2 border-solid border-dark-mode-task-button-border p-3;
+}
+
+.task-btn-checked-dark {
+  @apply h-[25px] w-[25px] rounded-full p-3 bg-gradient-to-r from-blue-check-background to-pink-check-background;
+}

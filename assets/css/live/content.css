@@ -1,23 +1,8 @@
+@import '/content/panel.css';
+@import '/content/task_card_list.css';
+@import '/content/task_input.css';
+@import '/task-btn.css';
+
 .content {
   @apply m-auto w-[540px] relative -top-[250px] h-[48px];
-}
-
-.panel {
-  @apply flex justify-between relative;
-}
-
-.task-input-card-light {
-  @apply flex h-[64px] w-full bg-light-mode-background-card rounded-task-card mt-[40px];
-}
-
-.task-input-input-light {
-  @apply w-full h-full border-0 text-[18px] text-light-mode-task-text;
-}
-
-.task-btn {
-  @apply h-[25px] w-[25px] rounded-full border-2 border-solid border-gray-200 p-3;
-}
-
-.task-btn-checked {
-  @apply h-[25px] w-[25px] rounded-full p-3 bg-gradient-to-r from-blue-check-background to-pink-check-background;
 }

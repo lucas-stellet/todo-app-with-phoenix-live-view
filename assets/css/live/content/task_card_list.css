@@ -1,0 +1,41 @@
+/* default */
+
+.task-card {
+  @apply w-full  border-b-2 flex h-[64px];
+}
+
+.task-cards-list {
+  @apply flex-col h-[64px] w-full rounded-task-card drop-shadow-2xl;
+}
+
+.task-card-bottom {
+  @apply flex justify-between w-full p-[24px];
+}
+
+/* light mode */
+
+.task-cards-list-light {
+  @apply task-cards-list bg-light-mode-background-card;
+}
+
+.task-card-light {
+  @apply task-card bg-light-mode-background-card border-b-light-mode-task-button-border;
+}
+
+.task-card-bottom-light {
+  @apply task-card-bottom bg-light-mode-background-card;
+}
+
+/* dark mode */
+
+.task-cards-list-dark {
+  @apply task-cards-list bg-dark-mode-background-card;
+}
+
+.task-card-dark {
+  @apply task-card bg-dark-mode-background-card border-b-dark-mode-task-button-border text-dark-mode-bottom-text;
+}
+
+.task-card-bottom-dark {
+  @apply task-card-bottom bg-dark-mode-background-card  text-dark-mode-bottom-text;
+}

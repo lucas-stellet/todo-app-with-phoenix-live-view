@@ -1,0 +1,29 @@
+/* default */
+
+.task-input-card {
+  @apply flex h-[64px] w-full rounded-task-card mt-[40px] mb-[24px] drop-shadow-2xl;
+}
+
+.task-input-input {
+  @apply w-full h-full border-0 text-[18px];
+}
+
+/* light mode */
+
+.task-input-card-light {
+  @apply task-input-card bg-light-mode-background-card;
+}
+
+.task-input-input-light {
+  @apply task-input-input text-light-mode-task-text p-4;
+}
+
+/* dark mode */
+
+.task-input-card-dark {
+  @apply task-input-card bg-dark-mode-background-card;
+}
+
+.task-input-input-dark {
+  @apply task-input-input text-dark-mode-task-text bg-dark-mode-input p-4;
+}
