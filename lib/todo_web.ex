@@ -48,6 +48,8 @@ defmodule TodoWeb do
       use Phoenix.LiveView,
         layout: {TodoWeb.LayoutView, "live.html"}
 
+      use TodoWeb.Components
+
       unquote(view_helpers())
     end
   end
@@ -56,6 +58,12 @@ defmodule TodoWeb do
     quote do
       use Phoenix.LiveComponent
 
+      use TodoWeb.Components
+
+      import TodoWeb.Components, only: [set_classes: 1]
+
+      attr :color_mode, :string
+
       unquote(view_helpers())
     end
   end
@@ -63,6 +71,8 @@ defmodule TodoWeb do
   def component do
     quote do
       use Phoenix.Component
+
+      attr :color_mode, :string
 
       unquote(view_helpers())
     end
@@ -97,8 +107,6 @@ defmodule TodoWeb do
 
       import TodoWeb.ErrorHelpers
       alias TodoWeb.Router.Helpers, as: Routes
-
-      use TodoWeb.Components
     end
   end
 
