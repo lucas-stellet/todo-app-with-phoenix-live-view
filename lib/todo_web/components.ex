@@ -31,7 +31,6 @@ defmodule TodoWeb.Components do
 
     classes = %{
       background: "bkg-#{color_mode}",
-      toggle: "/images/toggle-#{color_mode}.svg",
       task_text: "task-text#{checked}",
       task_button: "task-btn-#{checked}",
       task_input_card: "task-input-card-#{color_mode}",
@@ -46,6 +45,8 @@ defmodule TodoWeb.Components do
       #{inspect(classes)}
     """)
 
-    Phoenix.Component.assign(assigns, :classes, classes)
+    assigns
+    |> Phoenix.Component.assign(:classes, classes)
+    |> Phoenix.Component.assign(:color_mode, color_mode)
   end
 end

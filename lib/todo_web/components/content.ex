@@ -12,7 +12,7 @@ defmodule TodoWeb.Components.Content do
 
     ~H"""
     <div class="content">
-      <.panel toggle={@classes.toggle} />
+      <.panel color_mode={@color_mode} />
       <.task_input_card
         button={@classes.task_button}
         input={@classes.task_input_input}
