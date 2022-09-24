@@ -31,10 +31,4 @@ defmodule TodoWeb.Components.Content do
     </div>
     """
   end
-
-  def update(assigns, socket) do
-    assigns = Map.put(assigns, :input_value, "")
-
-    {:ok, assign(socket, assigns)}
-  end
 end

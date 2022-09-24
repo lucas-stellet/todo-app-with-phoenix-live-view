@@ -27,15 +27,13 @@ defmodule TodoWeb.Components.Content.Task do
         <% end %>
       </div>
 
-      <%= if Enum.count(@inner_block) > 0  do %>
-        <div class={@input}>
-          <p><%= render_slot(@inner_block) %></p>
-        </div>
-      <% else %>
-        <form phx-submit="create_task" class="flex-1">
-          <input class={@input} type="text" name="description" placeholder="Create a new todo..." />
-        </form>
-      <% end %>
+      <div class={@input}>
+        <p><%= render_slot(@inner_block) %></p>
+      </div>
+
+      <div>
+        <Heroicons.LiveView.icon name="x-mark" type="outline" class="h-7 w-7 p-4" />
+      </div>
     </div>
     """
   end
@@ -70,11 +68,3 @@ defmodule TodoWeb.Components.Content.Task do
     """
   end
 end
-
-# <input
-# class={@input}
-# type="text"
-# name="description"
-# value={render_slot(@inner_block)}
-# disabled={false}
-# />
