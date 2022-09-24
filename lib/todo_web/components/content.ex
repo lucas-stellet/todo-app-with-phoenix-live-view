@@ -17,7 +17,6 @@ defmodule TodoWeb.Components.Content do
         button={@classes.task_button}
         input={@classes.task_input_input}
         card={@classes.task_input_card}
-        value={@input_value}
       />
 
       <.task_card_list
