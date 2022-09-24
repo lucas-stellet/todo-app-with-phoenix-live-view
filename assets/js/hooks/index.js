@@ -8,6 +8,7 @@ let Hooks = {};
 
 Hooks.UpdateColorMode = {
   mounted() {
+    console.log(this.el);
     this.el.addEventListener('click', (e) => {
       changeColorMode();
 
@@ -15,6 +16,14 @@ Hooks.UpdateColorMode = {
         colorMode: getCurrentColor(),
       });
     });
+  },
+};
+
+Hooks.ClearInputValue = {
+  mounted() {
+    console.log(this.el);
+    console.log('atualizado');
+    document.getElementById('task-input').value = '';
   },
 };
 

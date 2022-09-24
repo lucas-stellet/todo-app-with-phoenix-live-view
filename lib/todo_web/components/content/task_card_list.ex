@@ -8,16 +8,23 @@ defmodule TodoWeb.Components.Content.TaskCardList do
   attr :button, :string
   attr :input, :string
 
-  import TodoWeb.Components.Content.TaskCard
+  import TodoWeb.Components.Content.Task
 
   def task_card_list(assigns) do
     ~H"""
     <div class={@card_list}>
-      <%= for task <- @tasks do %>
-        <.task_card input={@input} card={@card} button={@button}>
-          <%= task.description %>
-        </.task_card>
+      <%= if Enum.count(@tasks) > 0 do %>
+        <%= for task <- @tasks do %>
+          <.task_card id={task.id} input={@input} status={task.status} card={@card} button={@button}>
+            <%= task.description %>
+          </.task_card>
+        <% end %>
+      <% else %>
+        <.empty_task_card input={@input} card={@card}>
+          Oops... Nothing to show!
+        </.empty_task_card>
       <% end %>
+
       <div class={@bottom}>
         <button class="text-dark-mode-bottom-text text-[14px] font-bold">
           <%= Enum.count(@tasks) %> items left

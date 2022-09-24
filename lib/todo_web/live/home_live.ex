@@ -21,6 +21,8 @@ defmodule TodoWeb.HomeLive do
     {:noreply, socket}
   end
 
+  def handle_event("submit_new_task", _, socket), do: {:noreply, socket}
+
   def handle_event("list_all_tasks", _params, socket) do
     author = socket.assigns.user_access_key
 
@@ -57,6 +59,18 @@ defmodule TodoWeb.HomeLive do
   def handle_event("create_task", %{"description" => description}, socket) do
     author = socket.assigns.user_access_key
     {:ok, _} = Tasks.create_task(%{description: description, author: author})
+
+    update_component(:content, tasks: Tasks.list_tasks_by_author(author))
+
+    {:noreply, socket}
+  end
+
+  def handle_event("toggle_task_status", %{"value" => value}, socket) do
+    author = socket.assigns.user_access_key
+
+    [task_id, current_state] = String.split(value, "||")
+
+    Tasks.toggle_task_status(author, task_id, current_state)
 
     update_component(:content, tasks: Tasks.list_tasks_by_author(author))
 

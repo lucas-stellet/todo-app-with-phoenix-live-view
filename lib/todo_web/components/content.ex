@@ -1,7 +1,7 @@
 defmodule TodoWeb.Components.Content do
   use TodoWeb, :live_component
 
-  import __MODULE__.{Panel, TaskCardList, TaskCard}
+  import __MODULE__.{Panel, TaskCardList, Task}
 
   attr :tasks, :list
 
@@ -13,10 +13,11 @@ defmodule TodoWeb.Components.Content do
     ~H"""
     <div class="content">
       <.panel toggle={@classes.toggle} />
-      <.task_card
+      <.task_input_card
         button={@classes.task_button}
         input={@classes.task_input_input}
         card={@classes.task_input_card}
+        value={@input_value}
       />
 
       <.task_card_list
@@ -29,5 +30,11 @@ defmodule TodoWeb.Components.Content do
       />
     </div>
     """
+  end
+
+  def update(assigns, socket) do
+    assigns = Map.put(assigns, :input_value, "")
+
+    {:ok, assign(socket, assigns)}
   end
 end

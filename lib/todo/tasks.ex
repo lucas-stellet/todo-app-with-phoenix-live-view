@@ -22,6 +22,7 @@ defmodule Todo.Tasks do
     query =
       from t in Task,
         where: t.author == ^author and t.status != :deleted,
+        order_by: [asc: t.inserted_at],
         select: t
 
     Repo.all(query)
@@ -31,6 +32,7 @@ defmodule Todo.Tasks do
     query =
       from t in Task,
         where: t.author == ^author and t.status == ^status,
+        order_by: [asc: t.inserted_at],
         select: t
 
     Repo.all(query)
@@ -43,6 +45,33 @@ defmodule Todo.Tasks do
         select: t
 
     Repo.update_all(query, set: [status: :deleted])
+  end
+
+  def complete_task(author, task_id) do
+    query =
+      from t in Task,
+        where: t.author == ^author and t.id == ^task_id,
+        select: t
+
+    Repo.update_all(query, set: [status: :completed])
+  end
+
+  def toggle_task_status(author, task_id, "active") do
+    query =
+      from t in Task,
+        where: t.author == ^author and t.id == ^task_id,
+        select: t
+
+    Repo.update_all(query, set: [status: :completed])
+  end
+
+  def toggle_task_status(author, task_id, "completed") do
+    query =
+      from t in Task,
+        where: t.author == ^author and t.id == ^task_id,
+        select: t
+
+    Repo.update_all(query, set: [status: :active])
   end
 
   @doc """
