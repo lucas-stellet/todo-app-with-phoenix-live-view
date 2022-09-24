@@ -70,11 +70,3 @@ defmodule TodoWeb.Components.Content.Task do
     """
   end
 end
-
-# <input
-# class={@input}
-# type="text"
-# name="description"
-# value={render_slot(@inner_block)}
-# disabled={false}
-# />
