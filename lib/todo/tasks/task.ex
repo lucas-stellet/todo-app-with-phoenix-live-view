@@ -7,7 +7,7 @@ defmodule Todo.Tasks.Task do
   schema "tasks" do
     field :author, :string
     field :description, :string
-    field :status, Ecto.Enum, values: [:active, :completed], default: :active
+    field :status, Ecto.Enum, values: [:active, :completed, :deleted], default: :active
 
     timestamps()
   end

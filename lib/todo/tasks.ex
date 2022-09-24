@@ -21,27 +21,29 @@ defmodule Todo.Tasks do
   def list_tasks_by_author(author) do
     query =
       from t in Task,
-        where: t.author == ^author,
+        where: t.author == ^author and t.status != :deleted,
         select: t
 
     Repo.all(query)
   end
 
-  @doc """
-  Gets a single task.
+  def list_tasks_by_status(author, status) do
+    query =
+      from t in Task,
+        where: t.author == ^author and t.status == ^status,
+        select: t
 
-  Raises `Ecto.NoResultsError` if the Task does not exist.
+    Repo.all(query)
+  end
 
-  ## Examples
+  def delete_completed_tasks(author) do
+    query =
+      from t in Task,
+        where: t.author == ^author and t.status == :completed,
+        select: t
 
-      iex> get_task!(123)
-      %Task{}
-
-      iex> get_task!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_task!(id), do: Repo.get!(Task, id)
+    Repo.update_all(query, set: [status: :deleted])
+  end
 
   @doc """
   Creates a task.
