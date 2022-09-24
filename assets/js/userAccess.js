@@ -1,7 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-
 function setUserAccessKey() {
-  key = uuidv4();
+  const key = crypto.randomUUID();
 
   localStorage.setItem('_userAccessKey', key);
 
