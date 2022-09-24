@@ -13,11 +13,7 @@ defmodule TodoWeb.Components.Content do
     ~H"""
     <div class="content">
       <.panel color_mode={@color_mode} />
-      <.task_input_card
-        button={@classes.task_button}
-        input={@classes.task_input_input}
-        card={@classes.task_input_card}
-      />
+      <.task_input_card color_mode={@color_mode} />
 
       <.task_card_list
         tasks={@tasks}

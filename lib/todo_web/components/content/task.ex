@@ -42,15 +42,15 @@ defmodule TodoWeb.Components.Content.Task do
 
   def task_input_card(assigns) do
     ~H"""
-    <div class={@card}>
+    <div class={"task-input-card-#{@color_mode}"}>
       <div class="p-4">
-        <button class={@button}></button>
+        <button class={"task-btn-#{@color_mode}"}></button>
       </div>
 
       <form phx-submit="create_task" class="flex-1">
         <input
           id="task-input"
-          class={@input}
+          class={"task-input-input-#{@color_mode} focus:ring-0"}
           type="text"
           name="description"
           placeholder="Create a new todo..."
