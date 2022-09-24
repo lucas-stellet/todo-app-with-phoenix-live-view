@@ -47,6 +47,15 @@ defmodule TodoWeb.HomeLive do
     {:noreply, socket}
   end
 
+  def handle_event("delete_task", %{"value" => task_id}, socket) do
+    author = get_author_identity(socket)
+    Tasks.delete_task(author, task_id)
+
+    update_component(:content, tasks: Tasks.list_tasks_by_author(author))
+
+    {:noreply, socket}
+  end
+
   def handle_event("delete_completed_tasks", _params, socket) do
     author = get_author_identity(socket)
     Tasks.delete_completed_tasks(author)

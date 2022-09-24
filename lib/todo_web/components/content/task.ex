@@ -31,8 +31,10 @@ defmodule TodoWeb.Components.Content.Task do
         <p><%= render_slot(@inner_block) %></p>
       </div>
 
-      <div>
-        <Heroicons.LiveView.icon name="x-mark" type="outline" class="h-7 w-7 p-4" />
+      <div class="p-4">
+        <button phx-click="delete_task" value={@id}>
+          <Heroicons.LiveView.icon name="x-mark" type="outline" class="h-7 w-7" />
+        </button>
       </div>
     </div>
     """
@@ -68,3 +70,11 @@ defmodule TodoWeb.Components.Content.Task do
     """
   end
 end
+
+# <input
+# class={@input}
+# type="text"
+# name="description"
+# value={render_slot(@inner_block)}
+# disabled={false}
+# />

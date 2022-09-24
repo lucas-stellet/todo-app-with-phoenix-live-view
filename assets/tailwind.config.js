@@ -19,6 +19,7 @@ module.exports = {
         'light-mode-text': '#9495A5',
         'light-mode-checkec-task-text': '#D1D2DA',
         'light-mode-task-button-border': '#E3E4F1',
+        'light-mode-x-mark': '#E3E4F1',
 
         'pink-check-background': '#C058F3',
         'blue-check-background': '#55DDFF',
@@ -29,6 +30,7 @@ module.exports = {
         'dark-mode-input': '#25273D',
         'dark-mode-task-button-border': '#393A4B',
         'dark-mode-bottom-text': '#8f91ae',
+        'dark-mode-x-mark': '#E3E4F1',
       },
       borderRadius: {
         'task-card': '5px',

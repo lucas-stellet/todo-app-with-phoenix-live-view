@@ -47,6 +47,15 @@ defmodule Todo.Tasks do
     Repo.update_all(query, set: [status: :deleted])
   end
 
+  def delete_task(author, task_id) do
+    query =
+      from t in Task,
+        where: t.author == ^author and t.id == ^task_id,
+        select: t
+
+    Repo.update_all(query, set: [status: :deleted])
+  end
+
   def complete_task(author, task_id) do
     query =
       from t in Task,
