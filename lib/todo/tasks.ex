@@ -13,12 +13,18 @@ defmodule Todo.Tasks do
 
   ## Examples
 
-      iex> list_tasks()
-      [%Task{}, ...]
+  iex> list_tasks()
+  [%Task{}, ...]
 
   """
-  def list_tasks do
-    Repo.all(Task)
+
+  def list_tasks_by_author(author) do
+    query =
+      from t in Task,
+        where: t.author == ^author,
+        select: t
+
+    Repo.all(query)
   end
 
   @doc """

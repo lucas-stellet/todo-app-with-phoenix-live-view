@@ -22,19 +22,28 @@ defmodule TodoWeb.HomeLive do
   end
 
   def handle_event("create_task", %{"description" => description}, socket) do
-    {:ok, _} = Tasks.create_task(%{description: description})
+    author = socket.assigns.user_access_key
+    {:ok, _} = Tasks.create_task(%{description: description, author: author})
 
-    update_component(:content, tasks: Tasks.list_tasks())
+    update_component(:content, tasks: Tasks.list_tasks_by_author(author))
 
     {:noreply, socket}
   end
 
   defp update_with_default_assigns(socket) do
     color_mode = get_connect_params(socket)["colorMode"]
-    tasks = Tasks.list_tasks()
+    user_access_key = get_connect_params(socket)["userAccessKey"]
+
+    tasks =
+      if is_nil(user_access_key) do
+        []
+      else
+        Tasks.list_tasks_by_author(user_access_key)
+      end
 
     socket
     |> assign(:color_mode, color_mode)
     |> assign(:tasks, tasks)
+    |> assign(:user_access_key, user_access_key)
   end
 end

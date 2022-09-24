@@ -20,7 +20,7 @@ defmodule TodoWeb.Components.Content.TaskCardList do
       <% end %>
       <div class={@bottom}>
         <button class="text-dark-mode-bottom-text text-[14px] font-bold">
-          5 items left
+          <%= Enum.count(@tasks) %> items left
         </button>
 
         <div class="mx-2 flex-1 flex justify-evenly">
