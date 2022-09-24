@@ -12,7 +12,7 @@ export function changeToDarkMode() {
 }
 
 export function changeToLightMode() {
-  document.getElementById('todo-app').style.backgroundColor = '#f9f9f9';
+  document.getElementById('todo-app').style.backgroundColor = '#eaeaea';
   setColor('light');
 }
 

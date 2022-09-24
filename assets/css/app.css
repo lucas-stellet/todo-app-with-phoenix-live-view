@@ -11,6 +11,10 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
+#todo-app {
+  background-color: #eaeaea;
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;
