@@ -30,7 +30,7 @@ defmodule TodoWeb.HomeLive do
   end
 
   def handle_event("list_active_tasks", _params, socket) do
-    author = socket.assigns.user_access_key
+    author = get_author_identity(socket)
 
     update_component(:content, tasks: Tasks.list_tasks_by_status(author, :active))
 
@@ -38,7 +38,7 @@ defmodule TodoWeb.HomeLive do
   end
 
   def handle_event("list_completed_tasks", _params, socket) do
-    author = socket.assigns.user_access_key
+    author = get_author_identity(socket)
 
     update_component(:content, tasks: Tasks.list_tasks_by_status(author, :completed))
 
@@ -46,8 +46,7 @@ defmodule TodoWeb.HomeLive do
   end
 
   def handle_event("delete_completed_tasks", _params, socket) do
-    author = socket.assigns.user_access_key
-
+    author = get_author_identity(socket)
     Tasks.delete_completed_tasks(author)
 
     update_component(:content, tasks: Tasks.list_tasks_by_author(author))
@@ -80,4 +79,6 @@ defmodule TodoWeb.HomeLive do
     |> assign(:tasks, tasks)
     |> assign(:user_access_key, user_access_key)
   end
+
+  defp get_author_identity(socket), do: socket.assigns.user_access_key
 end
