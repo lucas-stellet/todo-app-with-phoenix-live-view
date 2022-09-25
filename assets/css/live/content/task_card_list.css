@@ -20,6 +20,10 @@
   @apply text-bottom-text text-[14px] font-bold;
 }
 
+.task-card-bottom-filters {
+  @apply mx-2 flex-1 flex justify-evenly;
+}
+
 /* light mode */
 
 .task-cards-list-light {

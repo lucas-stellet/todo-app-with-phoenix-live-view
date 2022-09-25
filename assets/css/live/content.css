@@ -11,4 +11,8 @@
   .content {
     @apply m-auto w-[375px] relative -top-[250px] h-[48px];
   }
+
+  .task-card-bottom-filters {
+    @apply my-2 flex-col;
+  }
 }

@@ -26,7 +26,7 @@ defmodule TodoWeb.Components.Content.TaskCardList do
           <%= Enum.count(@tasks) %> items left
         </button>
 
-        <div class="mx-2 flex-1 flex justify-evenly">
+        <div class="task-card-bottom-filters">
           <%= case @filter_clioked do %>
             <% :all -> %>
               <button
