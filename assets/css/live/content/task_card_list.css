@@ -1,7 +1,7 @@
 /* default */
 
 .task-card {
-  @apply w-full  border-b-2 flex h-[64px];
+  @apply w-full border-b-2 flex h-auto;
 }
 
 .task-cards-list {
