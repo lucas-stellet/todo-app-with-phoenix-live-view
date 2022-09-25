@@ -14,7 +14,6 @@ module.exports = {
       colors: {
         'light-mode-background': '#F2F2F2',
         'light-mode-background-card': '#FFFFFF',
-        'light-mode-hover-active': '#3A7CFD',
         'light-mode-task-text': '#494C6B',
         'light-mode-text': '#9495A5',
         'light-mode-checkec-task-text': '#D1D2DA',
@@ -24,6 +23,8 @@ module.exports = {
 
         'pink-check-background': '#C058F3',
         'blue-check-background': '#55DDFF',
+        'bottom-text': '#8f91ae',
+        'bottom-text-active': '#3A7CFD',
 
         'dark-mode-task-text': '#C8CBE7',
         'dark-mode-task-button-border': '#393A4B',
@@ -31,6 +32,7 @@ module.exports = {
         'dark-mode-input': '#25273D',
         'dark-mode-task-button-border': '#393A4B',
         'dark-mode-bottom-text': '#8f91ae',
+
         'dark-mode-x-mark': '#E3E4F1',
         'dark-mode-check': '#FFFFFF',
       },

@@ -2,6 +2,7 @@ defmodule TodoWeb.Components.Content.TaskCardList do
   use TodoWeb, :component
 
   attr :tasks, :list
+  attr :filter_clioked, :string
 
   import TodoWeb.Components.Content.Task
 
@@ -21,33 +22,96 @@ defmodule TodoWeb.Components.Content.TaskCardList do
       <% end %>
 
       <div class={"task-card-bottom-#{@color_mode}"}>
-        <button class="text-dark-mode-bottom-text text-[14px] font-bold">
+        <button class="task-card-bottom-filte">
           <%= Enum.count(@tasks) %> items left
         </button>
 
         <div class="mx-2 flex-1 flex justify-evenly">
-          <button class="text-dark-mode-bottom-text text-[14px] font-bold" phx-click="list_all_tasks">
-            All
-          </button>
+          <%= case @filter_clioked do %>
+            <% :all -> %>
+              <button
+                phx-hook="SendCurrentFilter"
+                id="all-filter"
+                class="task-card-bottom-filter-current"
+                phx-click="list_all_tasks"
+              >
+                All
+              </button>
 
-          <button
-            class="text-dark-mode-bottom-text text-[14px] font-bold"
-            phx-click="list_active_tasks"
-          >
-            Active
-          </button>
+              <button
+                phx-hook="SendCurrentFilter"
+                id="active-filter"
+                class="task-card-bottom-filter"
+                phx-click="list_active_tasks"
+              >
+                Active
+              </button>
 
-          <button
-            class="text-dark-mode-bottom-text text-[14px] font-bold"
-            phx-click="list_completed_tasks"
-          >
-            Completed
-          </button>
+              <button
+                phx-hook="SendCurrentFilter"
+                id="completed-filter"
+                class="task-card-bottom-filter"
+                phx-click="list_completed_tasks"
+              >
+                Completed
+              </button>
+            <% :active -> %>
+              <button
+                phx-hook="SendCurrentFilter"
+                id="all-filter"
+                class="task-card-bottom-filter"
+                phx-click="list_all_tasks"
+              >
+                All
+              </button>
+
+              <button
+                phx-hook="SendCurrentFilter"
+                id="active-filter"
+                class="task-card-bottom-filter-current"
+                phx-click="list_active_tasks"
+              >
+                Active
+              </button>
+
+              <button
+                phx-hook="SendCurrentFilter"
+                id="completed-filter"
+                class="task-card-bottom-filter"
+                phx-click="list_completed_tasks"
+              >
+                Completed
+              </button>
+            <% :completed -> %>
+              <button
+                phx-hook="SendCurrentFilter"
+                id="all-filter"
+                class="task-card-bottom-filter"
+                phx-click="list_all_tasks"
+              >
+                All
+              </button>
+
+              <button
+                phx-hook="SendCurrentFilter"
+                id="active-filter"
+                class="task-card-bottom-filter"
+                phx-click="list_active_tasks"
+              >
+                Active
+              </button>
+
+              <button
+                phx-hook="SendCurrentFilter"
+                id="completed-filter"
+                class="task-card-bottom-filter-current"
+                phx-click="list_completed_tasks"
+              >
+                Completed
+              </button>
+          <% end %>
         </div>
-        <button
-          class="font-bold text-dark-mode-bottom-text text-[14px]"
-          phx-click="delete_completed_tasks"
-        >
+        <button class="task-card-bottom-filte" phx-click="delete_completed_tasks">
           Clear Completed
         </button>
       </div>

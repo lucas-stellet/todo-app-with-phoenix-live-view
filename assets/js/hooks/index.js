@@ -8,7 +8,6 @@ let Hooks = {};
 
 Hooks.UpdateColorMode = {
   mounted() {
-    console.log(this.el);
     this.el.addEventListener('click', (e) => {
       changeColorMode();
 
@@ -19,10 +18,20 @@ Hooks.UpdateColorMode = {
   },
 };
 
+Hooks.SendCurrentFilter = {
+  mounted() {
+    this.el.addEventListener('click', (e) => {
+      const filterClicked = this.el.id.split('-')[0];
+
+      this.pushEvent('change-active-filter', {
+        filterClicked,
+      });
+    });
+  },
+};
+
 Hooks.ClearInputValue = {
   mounted() {
-    console.log(this.el);
-    console.log('atualizado');
     document.getElementById('task-input').value = '';
   },
 };

@@ -12,6 +12,14 @@
   @apply flex justify-between w-full p-[24px];
 }
 
+.task-card-bottom-filter-current {
+  @apply text-bottom-text-active text-[14px] font-bold;
+}
+
+.task-card-bottom-filter {
+  @apply text-bottom-text text-[14px] font-bold;
+}
+
 /* light mode */
 
 .task-cards-list-light {
