@@ -18,6 +18,11 @@ defmodule TodoWeb.Components.Content.Task do
               value={"#{@id}||#{@status}"}
               class={"task-btn-#{@color_mode}-checked"}
             >
+              <Heroicons.LiveView.icon
+                name="check"
+                type="solid"
+                class="h-4 w-4 font-bold text-slate-50 m-auto"
+              />
             </button>
           <% _ -> %>
             <button
@@ -35,7 +40,11 @@ defmodule TodoWeb.Components.Content.Task do
 
       <div class="p-4">
         <button phx-click="delete_task" value={@id}>
-          <Heroicons.LiveView.icon name="x-mark" type="outline" class="h-7 w-7" />
+          <Heroicons.LiveView.icon
+            name="x-mark"
+            type="outline"
+            class={"h-7 w-7 text-#{@color_mode}-mode-x-mark"}
+          />
         </button>
       </div>
     </div>
