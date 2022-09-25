@@ -22,7 +22,7 @@ defmodule TodoWeb.Components.Content.TaskCardList do
       <% end %>
 
       <div class={"task-card-bottom-#{@color_mode}"}>
-        <button class="task-card-bottom-filte">
+        <button class="task-card-bottom-filter">
           <%= Enum.count(@tasks) %> items left
         </button>
 
@@ -111,7 +111,7 @@ defmodule TodoWeb.Components.Content.TaskCardList do
               </button>
           <% end %>
         </div>
-        <button class="task-card-bottom-filte" phx-click="delete_completed_tasks">
+        <button class="task-card-bottom-filter" phx-click="delete_completed_tasks">
           Clear Completed
         </button>
       </div>
