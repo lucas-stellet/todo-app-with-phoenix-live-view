@@ -60,8 +60,6 @@ defmodule TodoWeb do
 
       use TodoWeb.Components
 
-      import TodoWeb.Components, only: [set_classes: 1]
-
       attr :color_mode, :string
 
       unquote(view_helpers())

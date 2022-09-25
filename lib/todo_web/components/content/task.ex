@@ -1,8 +1,6 @@
 defmodule TodoWeb.Components.Content.Task do
   use TodoWeb, :component
 
-  attr :button, :string
-  attr :input, :string
   attr :card, :string
   attr :id, :string
   attr :status, :string
@@ -11,23 +9,27 @@ defmodule TodoWeb.Components.Content.Task do
 
   def task_card(assigns) do
     ~H"""
-    <div class={@card}>
+    <div class={"task-card-#{@color_mode}"}>
       <div class="p-4">
         <%= case @status do %>
           <% :completed -> %>
             <button
               phx-click="toggle_task_status"
               value={"#{@id}||#{@status}"}
-              class={"#{@button}-checked"}
+              class={"task-btn-#{@color_mode}-checked"}
             >
             </button>
           <% _ -> %>
-            <button phx-click="toggle_task_status" value={"#{@id}||#{@status}"} class={@button}>
+            <button
+              phx-click="toggle_task_status"
+              value={"#{@id}||#{@status}"}
+              class={"task-btn-#{@color_mode}"}
+            >
             </button>
         <% end %>
       </div>
 
-      <div class={@input}>
+      <div class={"task-input-input-#{@color_mode} "}>
         <p><%= render_slot(@inner_block) %></p>
       </div>
 
@@ -62,8 +64,8 @@ defmodule TodoWeb.Components.Content.Task do
 
   def empty_task_card(assigns) do
     ~H"""
-    <div class={@card}>
-      <div class={"#{@input} text-center"}>
+    <div class={"task-card-#{@color_mode}"}>
+      <div class={"task-input-input-#{@color_mode} text-center"}>
         <p class="text-[20px]"><%= render_slot(@inner_block) %></p>
       </div>
     </div>
