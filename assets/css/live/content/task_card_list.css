@@ -1,7 +1,7 @@
 /* default */
 
 .task-card {
-  @apply w-full  border-b-2 flex h-[64px];
+  @apply w-full border-b-2 flex h-auto;
 }
 
 .task-cards-list {
@@ -10,6 +10,18 @@
 
 .task-card-bottom {
   @apply flex justify-between w-full p-[24px];
+}
+
+.task-card-bottom-filter-current {
+  @apply text-bottom-text-active text-[14px] font-bold;
+}
+
+.task-card-bottom-filter {
+  @apply text-bottom-text text-[14px] font-bold;
+}
+
+.task-card-bottom-filters {
+  @apply mx-2 flex-1 flex justify-evenly;
 }
 
 /* light mode */

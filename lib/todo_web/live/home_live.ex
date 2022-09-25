@@ -7,7 +7,13 @@ defmodule TodoWeb.HomeLive do
     ~H"""
     <.live_component module={Header} id="header" color_mode={@color_mode} />
 
-    <.live_component module={Content} id="content" tasks={@tasks} color_mode={@color_mode} />
+    <.live_component
+      module={Content}
+      id="content"
+      tasks_filter_clicked={@tasks_filter_clicked}
+      tasks={@tasks}
+      color_mode={@color_mode}
+    />
     """
   end
 
@@ -86,6 +92,12 @@ defmodule TodoWeb.HomeLive do
     {:noreply, socket}
   end
 
+  def handle_event("change-active-filter", %{"filterClicked" => filterClicked}, socket) do
+    update_component(:content, tasks_filter_clicked: String.to_existing_atom(filterClicked))
+
+    {:noreply, socket}
+  end
+
   defp update_with_default_assigns(socket) do
     color_mode = get_connect_params(socket)["colorMode"]
     user_access_key = get_connect_params(socket)["userAccessKey"]
@@ -101,6 +113,7 @@ defmodule TodoWeb.HomeLive do
     |> assign(:color_mode, color_mode)
     |> assign(:tasks, tasks)
     |> assign(:user_access_key, user_access_key)
+    |> assign(:tasks_filter_clicked, :all)
   end
 
   defp get_author_identity(socket), do: socket.assigns.user_access_key
