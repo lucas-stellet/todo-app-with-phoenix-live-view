@@ -6,3 +6,9 @@
 .content {
   @apply m-auto w-[540px] relative -top-[250px] h-[48px];
 }
+
+@media (min-width: 375px) and (max-width: 550px) {
+  .content {
+    @apply m-auto w-[375px] relative -top-[250px] h-[48px];
+  }
+}
