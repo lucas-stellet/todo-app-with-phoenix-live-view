@@ -33,11 +33,11 @@ defmodule TodoWeb.Components.Content.TaskCardList do
     ~H"""
     <div class={"task-card-bottom-#{@color_mode}"}>
       <%= if Enum.count(@tasks) <= 1 do %>
-        <button class="task-card-bottom-filter">
+        <button class="task-card-bottom-filter" disabled>
           <%= Enum.count(@tasks) %> item left
         </button>
       <% else %>
-        <button class="task-card-bottom-filter">
+        <button class="task-card-bottom-filter" disabled>
           <%= Enum.count(@tasks) %> items left
         </button>
       <% end %>
