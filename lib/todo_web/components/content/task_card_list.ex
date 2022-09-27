@@ -30,9 +30,15 @@ defmodule TodoWeb.Components.Content.TaskCardList do
   def filters_bottom(assigns) do
     ~H"""
     <div class={"task-card-bottom-#{@color_mode}"}>
-      <button class="task-card-bottom-filter">
-        <%= Enum.count(@tasks) %> items left
-      </button>
+      <%= if Enum.count(@tasks) <= 1 do %>
+        <button class="task-card-bottom-filter">
+          <%= Enum.count(@tasks) %> item left
+        </button>
+      <% else %>
+        <button class="task-card-bottom-filter">
+          <%= Enum.count(@tasks) %> items left
+        </button>
+      <% end %>
 
       <div class="task-card-bottom-filters">
         <%= case @filter_clioked do %>
@@ -119,9 +125,24 @@ defmodule TodoWeb.Components.Content.TaskCardList do
             </button>
         <% end %>
       </div>
-      <button class="task-card-bottom-filter" id="clear-completed" phx-click="delete_completed_tasks">
-        Clear Completed
-      </button>
+      <%= if Enum.count(@tasks) > 0 and Enum.any?(@tasks, & &1.status == :completed) do %>
+        <button
+          class="task-card-bottom-filter"
+          id="clear-completed"
+          phx-click="delete_completed_tasks"
+        >
+          Clear Completed
+        </button>
+      <% else %>
+        <button
+          class="task-card-bottom-filter"
+          id="clear-completed"
+          phx-click="delete_completed_tasks"
+          disabled
+        >
+          Clear Completed
+        </button>
+      <% end %>
     </div>
     """
   end

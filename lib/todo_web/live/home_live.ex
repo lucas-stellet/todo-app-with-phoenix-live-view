@@ -82,7 +82,9 @@ defmodule TodoWeb.HomeLive do
   def handle_event("delete_completed_tasks", _params, socket) do
     author = get_author_identity(socket)
 
-    tasks = Tasks.delete_completed_tasks(author)
+    Tasks.delete_completed_tasks(author)
+
+    tasks = Tasks.list_tasks_by_author(author)
 
     socket = assign(socket, :tasks, tasks)
 
