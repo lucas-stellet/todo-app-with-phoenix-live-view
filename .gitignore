@@ -35,3 +35,4 @@ npm-debug.log
 lib/todo_web/templates/.DS_Store
 lib/todo_web/.DS_Store
 .DS_Store
+data/
