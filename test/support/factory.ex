@@ -1,9 +1,11 @@
 defmodule Todo.Factory do
+  @moduledoc false
+
   use ExMachina.Ecto, repo: Todo.Repo
 
   alias Todo.Tasks.Task
 
-  def task_factory() do
+  def task_factory do
     %Task{
       id: Ecto.UUID.generate(),
       description: Faker.Lorem.sentence(10),

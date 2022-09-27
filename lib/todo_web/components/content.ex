@@ -1,4 +1,6 @@
 defmodule TodoWeb.Components.Content do
+  @moduledoc false
+
   use TodoWeb, :live_component
 
   import __MODULE__.{Panel, TaskCardList, Task}

@@ -1,4 +1,6 @@
 defmodule TodoWeb.Components.Content.TaskCardList do
+  @moduledoc false
+
   use TodoWeb, :component
 
   attr :tasks, :list

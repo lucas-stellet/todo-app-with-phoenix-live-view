@@ -1,4 +1,6 @@
 defmodule TodoWeb.Components.Content.Panel do
+  @moduledoc false
+
   use TodoWeb, :component
 
   def panel(assigns) do

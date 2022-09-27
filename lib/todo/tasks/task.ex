@@ -1,4 +1,12 @@
 defmodule Todo.Tasks.Task do
+  @moduledoc false
+
+  @type t :: %__MODULE__{
+          author: binary(),
+          description: binary(),
+          status: atom()
+        }
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -19,6 +27,7 @@ defmodule Todo.Tasks.Task do
     |> validate_required([:description])
   end
 
+  @doc false
   def update_changeset(task, attrs) do
     task
     |> cast(attrs, [:description, :status])
