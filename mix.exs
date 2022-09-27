@@ -50,7 +50,8 @@ defmodule Todo.MixProject do
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:ex_heroicons, "~> 2.0.0"},
       {:ex_machina, "~> 2.7.0"},
-      {:faker, "~> 0.17", only: :test}
+      {:faker, "~> 0.17", only: :test},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 
