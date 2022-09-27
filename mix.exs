@@ -20,7 +20,7 @@ defmodule Todo.MixProject do
   def application do
     [
       mod: {Todo.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ex_machina]
     ]
   end
 
@@ -48,7 +48,9 @@ defmodule Todo.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:ex_heroicons, "~> 2.0.0"}
+      {:ex_heroicons, "~> 2.0.0"},
+      {:ex_machina, "~> 2.7.0"},
+      {:faker, "~> 0.17", only: :test}
     ]
   end
 

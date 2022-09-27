@@ -23,11 +23,44 @@ defmodule TodoWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import TodoWeb.ConnCase
+      import Phoenix.LiveViewTest
 
       alias TodoWeb.Router.Helpers, as: Routes
 
+      import Todo.Factory
+
       # The default endpoint for testing
       @endpoint TodoWeb.Endpoint
+
+      def setup_conn(ctx, opts \\ []) do
+        connected_params = %{
+          "userAccessKey" => Ecto.UUID.generate(),
+          "colorMode" => Keyword.get(opts, :color_mode, "light")
+        }
+
+        conn = Phoenix.LiveViewTest.put_connect_params(ctx.conn, connected_params)
+
+        {:ok, view, _html} = live(conn, "/")
+
+        ctx =
+          ctx
+          |> Map.put(:conn, conn)
+          |> Map.put(:user_access_key, connected_params["userAccessKey"])
+          |> Map.put(:view, view)
+
+        {:ok, ctx}
+      end
+
+      def create_task(%{user_access_key: author} = ctx), do: insert(:task, author: author)
+
+      def create_active_tasks(%{user_access_key: author} = ctx),
+        do: insert_list(3, :task, author: author)
+
+      def create_mixed_tasks(%{user_access_key: author} = ctx),
+        do: insert_list(3, :task, author: author)
+
+      def create_completed_tasks(%{user_access_key: author} = ctx),
+        do: insert_list(3, :task, author: author, status: :completed)
     end
   end
 

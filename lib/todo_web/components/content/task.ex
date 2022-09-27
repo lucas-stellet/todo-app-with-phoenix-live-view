@@ -21,7 +21,7 @@ defmodule TodoWeb.Components.Content.Task do
               <Heroicons.LiveView.icon
                 name="check"
                 type="solid"
-                class="h-4 w-4 font-bold text-slate-50 m-auto"
+                class="h-5 w-5 font-bold text-slate-50 m-auto"
               />
             </button>
           <% _ -> %>
@@ -39,11 +39,11 @@ defmodule TodoWeb.Components.Content.Task do
       </div>
 
       <div class="p-4">
-        <button phx-click="delete_task" value={@id}>
+        <button id="delete-task" phx-click="delete_task" value={@id}>
           <Heroicons.LiveView.icon
             name="x-mark"
-            type="outline"
-            class={"h-7 w-7 text-#{@color_mode}-mode-x-mark"}
+            type="solid"
+            class={"h-7 w-7 font-bold text-#{@color_mode}-mode-x-mark"}
           />
         </button>
       </div>
@@ -55,10 +55,10 @@ defmodule TodoWeb.Components.Content.Task do
     ~H"""
     <div class={"task-input-card-#{@color_mode}"}>
       <div class="p-4">
-        <button class={"task-btn-#{@color_mode}"}></button>
+        <button class={"task-btn-#{@color_mode} pointer-events-none"}></button>
       </div>
 
-      <form phx-submit="create_task" class="flex-1">
+      <form id="new-task" phx-submit="create_task" class="flex-1">
         <input
           id="task-input"
           class={"task-input-input-#{@color_mode} focus:ring-0"}
