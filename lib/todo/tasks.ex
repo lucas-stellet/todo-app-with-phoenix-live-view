@@ -118,7 +118,13 @@ defmodule Todo.Tasks do
         where: t.author == ^author and t.id == ^task_id,
         select: t
 
-    Repo.update_all(query, set: [status: :completed])
+    case Repo.update_all(query, set: [status: :completed]) do
+      {1, [%Task{id: ^task_id}]} ->
+        :ok
+
+      {0, []} ->
+        {:error, :task_not_found}
+    end
   end
 
   @doc """
@@ -180,52 +186,5 @@ defmodule Todo.Tasks do
     %Task{}
     |> Task.changeset(attrs)
     |> Repo.insert()
-  end
-
-  @doc """
-  Updates a task.
-
-  ## Examples
-
-      iex> update_task(task, %{field: new_value})
-      {:ok, %Task{}}
-
-      iex> update_task(task, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_task(%Task{} = task, attrs) do
-    task
-    |> Task.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a task.
-
-  ## Examples
-
-      iex> delete_task(task)
-      {:ok, %Task{}}
-
-      iex> delete_task(task)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_task(%Task{} = task) do
-    Repo.delete(task)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking task changes.
-
-  ## Examples
-
-      iex> change_task(task)
-      %Ecto.Changeset{data: %Task{}}
-
-  """
-  def change_task(%Task{} = task, attrs \\ %{}) do
-    Task.changeset(task, attrs)
   end
 end
