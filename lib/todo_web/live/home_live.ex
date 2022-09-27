@@ -22,42 +22,48 @@ defmodule TodoWeb.HomeLive do
   end
 
   def handle_event("update_color_mode", %{"colorMode" => color_mode}, socket) do
-    update_component(:all, color_mode: color_mode)
+    {:noreply, assign(socket, :color_mode, color_mode)}
+  end
+
+  def handle_event("create_task", %{"description" => description}, socket) do
+    {:ok, _} = Tasks.create_task(%{description: description, author: get_author_identity(socket)})
+
+    tasks = Tasks.list_tasks_by_author(get_author_identity(socket))
+
+    socket = assign(socket, :tasks, tasks)
 
     {:noreply, socket}
   end
 
-  def handle_event("submit_new_task", _, socket), do: {:noreply, socket}
-
   def handle_event("list_all_tasks", _params, socket) do
-    author = socket.assigns.user_access_key
+    tasks = Tasks.list_tasks_by_author(get_author_identity(socket))
 
-    update_component(:content, tasks: Tasks.list_tasks_by_author(author))
+    socket = assign(socket, :tasks, tasks)
 
     {:noreply, socket}
   end
 
   def handle_event("list_active_tasks", _params, socket) do
-    author = get_author_identity(socket)
+    tasks = Tasks.list_tasks_by_status(get_author_identity(socket), :active)
 
-    update_component(:content, tasks: Tasks.list_tasks_by_status(author, :active))
+    socket = assign(socket, :tasks, tasks)
 
     {:noreply, socket}
   end
 
   def handle_event("list_completed_tasks", _params, socket) do
-    author = get_author_identity(socket)
-
-    update_component(:content, tasks: Tasks.list_tasks_by_status(author, :completed))
+    socket =
+      assign(socket, :tasks, Tasks.list_tasks_by_status(get_author_identity(socket), :completed))
 
     {:noreply, socket}
   end
 
   def handle_event("delete_task", %{"value" => task_id}, socket) do
-    author = get_author_identity(socket)
-    Tasks.delete_task(author, task_id)
+    Tasks.delete_task(get_author_identity(socket), task_id)
 
-    update_component(:content, tasks: Tasks.list_tasks_by_author(author))
+    tasks = Tasks.list_tasks_by_author(get_author_identity(socket))
+
+    socket = assign(socket, :tasks, tasks)
 
     {:noreply, socket}
   end
@@ -65,15 +71,6 @@ defmodule TodoWeb.HomeLive do
   def handle_event("delete_completed_tasks", _params, socket) do
     author = get_author_identity(socket)
     Tasks.delete_completed_tasks(author)
-
-    update_component(:content, tasks: Tasks.list_tasks_by_author(author))
-
-    {:noreply, socket}
-  end
-
-  def handle_event("create_task", %{"description" => description}, socket) do
-    author = socket.assigns.user_access_key
-    {:ok, _} = Tasks.create_task(%{description: description, author: author})
 
     update_component(:content, tasks: Tasks.list_tasks_by_author(author))
 
