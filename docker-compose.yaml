@@ -1,12 +1,36 @@
 # File my_app/docker-compose.yml
 version: "3"
 
+networks:
+  todo:
+    external: false
+
 services:
+  app:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    environment:
+      - DATABASE_URL=ecto://postgres:postgres@db/todo
+      - DATABASE_DB=todo
+      - SECRET_KEY_BASE=WjH4pal9U8nz5lT5PcSfOsPUjDL5i6HrVsQ+Veo7cIKbt2AMKTRZidODxdePT5Ho
+      - PORT=4000
+    ports:
+      - 4000:4000
+    networks:
+      - todo
+    depends_on:
+      - db
+
   db:
-    image: postgres:12-alpine
+    image: postgres:9.6
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=todo
     ports:
       - 5432:5432
+    networks:
+      - todo
