@@ -55,7 +55,7 @@ defmodule TodoWeb.Components.Content.Task do
     ~H"""
     <div class={"task-input-card-#{@color_mode}"}>
       <div class="p-4">
-        <button class={"task-btn-#{@color_mode}"}></button>
+        <button class={"task-btn-#{@color_mode} pointer-events-none"}></button>
       </div>
 
       <form phx-submit="create_task" class="flex-1">
