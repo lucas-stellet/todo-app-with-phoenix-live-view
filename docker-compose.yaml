@@ -1,0 +1,12 @@
+# File my_app/docker-compose.yml
+version: "3"
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=todo
+    ports:
+      - 5432:5432
